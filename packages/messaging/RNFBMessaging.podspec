@@ -40,6 +40,6 @@ Pod::Spec.new do |s|
     Pod::UI.puts "#{s.name}: Using overridden static_framework value of '#{$RNFirebaseAsStaticFramework}'"
     s.static_framework = $RNFirebaseAsStaticFramework
   else
-    s.static_framework = false
+    s.static_framework = true
   end
 end
