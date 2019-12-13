@@ -208,12 +208,6 @@ RCT_EXPORT_METHOD(requestPermission:
       }
     }
 
-    if ([permissions[@"provisional"] isEqual:@(YES)]) {
-      if (@available(iOS 12.0, *)) {
-        options |= UNAuthorizationOptionProvisional;
-      }
-    }
-
     if ([permissions[@"announcement"] isEqual:@(YES)]) {
       if (@available(iOS 13.0, *)) {
         #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
