@@ -1,6 +1,5 @@
 require 'json'
 package = JSON.parse(File.read('../package.json'))
-
 Pod::Spec.new do |s|
   s.name                = "RNFirebase"
   s.version             = package["version"]
@@ -17,6 +16,7 @@ Pod::Spec.new do |s|
   s.source_files        = 'RNFirebase/**/*.{h,m}'
   s.dependency          'React'
   s.dependency          'Firebase/Core'
+  s.dependency          'Firebase/Messaging'
   s.subspec 'Crashlytics' do |cs|
     cs.dependency 'Fabric'
     cs.dependency 'Crashlytics'

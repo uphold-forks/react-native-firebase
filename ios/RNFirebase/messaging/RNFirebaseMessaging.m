@@ -201,9 +201,13 @@ RCT_EXPORT_METHOD(hasPermission:(RCTPromiseResolveBlock)resolve rejecter:(RCTPro
     } else {
         if (@available(iOS 10.0, *)) {
             [[UNUserNotificationCenter currentNotificationCenter] getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
-              BOOL hasPermission = [RCTConvert BOOL:@(settings.alertSetting == UNNotificationSettingEnabled)];
-              resolve(@(hasPermission));
-            }];
+            if (settings.authorizationStatus == UNAuthorizationStatusNotDetermined){
+            resolve(nil);
+            } else {
+            BOOL hasPermission = [RCTConvert BOOL:@(settings.alertSetting == UNNotificationSettingEnabled)];
+            resolve(@(hasPermission));
+            }
+        }];
         }
     }
 }
